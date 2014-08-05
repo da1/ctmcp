@@ -100,6 +100,17 @@ in
    {Assoc @S}
 end
 
+declare
+S={MyNewStore}
+{MyPut S 2 [22 33]}
+{Browse {MyGet S 2}}
+{Browse {MySize S}}
+{MyPut S 2 10}
+{Browse {MySize S}}
+{MyPut S 3 99}
+{Browse {MyGet S 3}}
+{Browse {MySize S}}
+
 % (d)
 % 1.13のカウンタオブジェクトを使って，記憶域の大きさを維持できるように記憶域の実装を変更せよ
 
@@ -133,4 +144,9 @@ declare
 S={MyNewStore}
 {MyPut S 2 [22 33]}
 {Browse {MyGet S 2}}
+{Browse {MySize S}}
+{MyPut S 2 10}
+{Browse {MySize S}}
+{MyPut S 3 99}
+{Browse {MyGet S 3}}
 {Browse {MySize S}}
