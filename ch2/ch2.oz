@@ -1,4 +1,4 @@
-% 宣言的計算モデル
+%宣言的計算モデル
 
 % 計算モデル
 % 計算モデルとは形式的体型であって一つの言語を定義し，かつその言語の命令が抽象マシンによってどのように実行されるかを定義するものである．
@@ -85,3 +85,76 @@
 
 % 2.6 核言語から実用的言語へ
 
+% 2.7 例外
+
+declare
+fun {Eval E}
+   if {IsNumber E} then E
+   else
+      case E
+      of plus(X Y) then {Eval X} + {Eval Y}
+      [] times(X Y) then {Eval X} * {Eval Y}
+      else raise illFormedExpr(E) end
+      end
+   end
+end
+
+try
+   {Browse {Eval plus(plus(5 5) 10)}}
+   {Browse {Eval times(6 11)}}
+   {Browse {Eval minus(7 10)}}
+catch illFormedExpr(E) then
+   {Browse '*** Illegal expression '#E#' ***'}
+end
+
+% 2.7.2 例外を持つ宣言的モデル
+
+% try 文
+% raise 文
+% catch 文
+
+% 2.7.3 親言語の構文
+
+% finnaly 節
+
+% try <s1> finally <s2> end
+
+/*
+try
+   <s1>
+catch x then
+   <s2>
+   raise X end
+end
+<s2>
+*/
+
+% パターンマッチング
+
+/*
+try s catch p1 then s1
+   [] p2 then s2
+   ...
+   [] pn then sn
+end
+*/
+
+/*
+try s catch X then
+   case X
+   of p1 then s1
+   [] p2 then s2
+      ...
+   [] pn then sn
+   else raise X end
+   end
+end
+*/
+
+% 2.7.4 システム例外
+
+% failure つじつまの合わない束縛操作が行われたことを示す 単一化失敗とも呼ばれる
+
+% error プログラム実行時のエラー 型か定義域のどちらかの誤り
+
+% system Mozartオペレーティングシステムの環境内で実行時エラーが起こったことを示す．
