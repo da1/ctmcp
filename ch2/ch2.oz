@@ -114,13 +114,13 @@ fun {Eval E}
    end
 end
 
-try
+% try
    {Browse {Eval plus(plus(5 5) 10)}}
    {Browse {Eval times(6 11)}}
    {Browse {Eval minus(7 10)}}
-catch illFormedExpr(E) then
-   {Browse '*** Illegal expression '#E#' ***'}
-end
+% catch illFormedExpr(E) then
+%   {Browse '*** Illegal expression '#E#' ***'}
+%end
 
 % 2.7.2 例外を持つ宣言的モデル
 

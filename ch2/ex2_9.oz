@@ -1,11 +1,17 @@
 % 9. 末尾再帰
 
+declare Sum1
 fun {Sum1 N}
    if N==0 then 0 else N+{Sum1 N-1} end
 end
+{Browse {Sum1 10000000}}
+
+declare Sum2
 fun {Sum2 N S}
    if N==0 then S else {Sum2 N-1 N+S} end
 end
+
+{Browse {Sum2 10000000 0}}
 
 % (a) 核言語に展開せよ
 

@@ -4,5 +4,5 @@
 
 % elseのないif文
 
-if X > 0 then Y = 1 end
+if X > 0 then Y = 1 else false end
 
